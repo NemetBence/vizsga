@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Sze 25. 09:18
+-- Létrehozás ideje: 2025. Sze 27. 10:07
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -74,7 +74,16 @@ INSERT INTO `csapat_diak_kotes` (`evId`, `csapatId`, `versenyId`, `szamId`, `tip
 (5, NULL, 5, 16, NULL, 3, NULL),
 (6, NULL, 13, 18, NULL, 2, 1),
 (7, NULL, 15, NULL, NULL, 1, NULL),
-(7, NULL, 16, NULL, NULL, 6, NULL);
+(7, NULL, 16, NULL, NULL, 6, NULL),
+(8, NULL, 23, NULL, NULL, 2, NULL),
+(8, NULL, 23, NULL, NULL, 8, NULL),
+(8, NULL, 3, 21, 1, 1, 1),
+(8, NULL, 26, NULL, NULL, 1, NULL),
+(8, NULL, 27, NULL, NULL, 1, NULL),
+(8, NULL, 28, NULL, NULL, 2, 4),
+(8, NULL, 28, NULL, NULL, 3, 5),
+(8, NULL, 3, 22, 1, 3, 4),
+(8, NULL, 3, 22, 1, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -94,23 +103,37 @@ CREATE TABLE `diakok` (
 INSERT INTO `diakok` (`id`, `nev`) VALUES
 (10, 'Bíró Géza'),
 (11, 'Boros Péter'),
+(29, 'Bukva Viktor'),
 (8, 'Darabos Pál'),
+(24, 'Farkas Attila'),
 (15, 'Fekete Mónika'),
+(34, 'Hurguly Attila'),
 (1, 'Huszár Endre'),
 (16, 'Jegyinák Attila'),
 (7, 'Klampeczki Zsolt'),
+(21, 'Kovács Csaba'),
 (17, 'Kovács Gábor'),
 (3, 'Krizsán Attila'),
 (18, 'Laczó György'),
+(32, 'Laurinyecz Gyöngyi'),
 (2, 'Marton Balázs'),
 (12, 'Michnay Balázs'),
+(25, 'Molnár György'),
 (14, 'Molnár László'),
+(33, 'Molnár Sándor'),
 (19, 'Nemes Csaba'),
+(23, 'Oláh Attila'),
+(30, 'Palatinus László'),
+(26, 'Palotai István Sándor'),
+(27, 'Sajti Roland'),
 (9, 'Somogyi Erzsébet'),
+(31, 'Szabados László'),
+(28, 'Szabó Lajos'),
 (4, 'Szabó Tibor'),
 (13, 'Szegedi Péter'),
 (20, 'Szentesi Szabolcs'),
 (5, 'Szirbik Sándor'),
+(22, 'Túróczy Zoltán'),
 (6, 'Vozár János');
 
 -- --------------------------------------------------------
@@ -164,7 +187,8 @@ INSERT INTO `egyebek` (`id`, `tanevId`, `leiras`) VALUES
 (8, 9, 'Énekkar - Éneklő Ifjúság hangverseny arany minősítés'),
 (9, 10, 'Énekkar (fiúkórus) - Éneklő Ifjúság hangverseny arany minősítés'),
 (10, 13, 'GÉSZI tantestülete - Oklevél az Országos Műszaki Tanulmányi Versenyen elért eredményekért'),
-(11, 32, 'Pályázat - \"Innovációs Díj 2021\" I. helyezett Kincses István, Mucha István és Paróczai Olivér, II. helyezett Magyar Balázs');
+(11, 32, 'Pályázat - \"Innovációs Díj 2021\" I. helyezett Kincses István, Mucha István és Paróczai Olivér, II. helyezett Magyar Balázs'),
+(12, 8, 'Fekete Mónika - Arany János Balladamondó Verseny országos döntőse');
 
 -- --------------------------------------------------------
 
@@ -185,7 +209,11 @@ CREATE TABLE `garabonciasok` (
 
 INSERT INTO `garabonciasok` (`evId`, `jeloltId`, `stab`, `elertHely`) VALUES
 (3, 3, 'nincs adat', NULL),
-(5, 6, 'nincs adat', 'Diákpolgármester');
+(5, 6, 'nincs adat', 'Diákpolgármester'),
+(6, 21, 'nincs adat', 'Dik-alpolgármester'),
+(7, 22, 'nincs adat', 'Diák-alpolgármester'),
+(8, 23, 'nincs adat', NULL),
+(9, 34, 'nincs adat', 'Diák-alpolgármester');
 
 -- --------------------------------------------------------
 
@@ -208,6 +236,7 @@ INSERT INTO `korcsoportok_nemek` (`id`, `knNev`) VALUES
 (2, 'férfi'),
 (1, 'fiú'),
 (3, 'lány'),
+(7, 'női'),
 (6, 'serdülő fiú');
 
 -- --------------------------------------------------------
@@ -281,14 +310,20 @@ CREATE TABLE `versenyek` (
 --
 
 INSERT INTO `versenyek` (`id`, `vNev`) VALUES
+(34, '\"Játék időhatárok nélkül\" sportvetélkedő'),
 (13, '\"Szuper kupa\"'),
 (21, 'Bay Zoltán Fizika Emlékverseny'),
 (20, 'Budó Ágoston Fizika Feladatmegoldó Verseny'),
 (22, 'Csabai Garabonciás Napok'),
+(36, 'Deák Ferenc Kézilabda Kupa'),
 (3, 'Diákolimpia'),
+(38, 'Dragon Kupa Taekwon-do'),
 (29, 'Fehér Kupa Taekwon-do'),
+(30, 'Gordiusz Matematika Tesztverseny'),
 (4, 'id. Christián László emlékverseny'),
+(33, 'Implom József helyesírás Verseny'),
 (23, 'Informatikával a környezetért honlapkészítő verseny'),
+(35, 'Játék határok nélkül'),
 (24, 'Kalmár László Országos Középiskolai Számítástechnikai Verseny'),
 (15, 'Környezetvédelmi vetélkedő'),
 (12, 'Középiskolai Alapfokú Szuperkupa'),
@@ -301,6 +336,7 @@ INSERT INTO `versenyek` (`id`, `vNev`) VALUES
 (7, 'Nemzetközi Diák Labdarúgó Torna'),
 (19, 'Nemzetközi Informatikai Diákolimpia'),
 (14, 'Neumann János Számítástechnikai Verseny'),
+(37, 'Nyílt Taekwon-do OB'),
 (9, 'Olimpiai Vetélkedő'),
 (17, 'OMTV'),
 (8, 'Országos Szakmunkástanuló Teremlabdarúgó Bajnokság'),
@@ -308,8 +344,10 @@ INSERT INTO `versenyek` (`id`, `vNev`) VALUES
 (11, 'Péter András Kosárlabda Torna'),
 (16, 'Polgár Európa'),
 (5, 'Székelyudvarhely Budvár Kupa'),
+(31, 'Szép Magyar Beszéd'),
 (2, 'Városi Alapfokú Bajnokság'),
-(25, 'Városi József Attila Szavalóverseny');
+(25, 'Városi József Attila Szavalóverseny'),
+(32, 'Városi József Attila Versmondó Verseny');
 
 -- --------------------------------------------------------
 
@@ -333,18 +371,24 @@ INSERT INTO `versenyszam` (`id`, `szNev`) VALUES
 (1, '60 méter gátfutás'),
 (10, 'automatika - PLC'),
 (7, 'diszkoszvetés'),
+(36, 'egyéni küzdelem'),
 (20, 'elektronika'),
 (14, 'épületgépész'),
+(39, 'futás'),
 (15, 'futball'),
 (13, 'gépész'),
 (26, 'gyorsúszás'),
 (9, 'hármasugrás'),
+(37, 'hárompontos'),
+(38, 'hátúszás'),
+(34, 'informatika'),
 (23, 'karate'),
 (22, 'kézilabda'),
 (17, 'kispályás labdarúgás'),
 (18, 'kosárlabda'),
 (2, 'labdarúgás'),
 (25, 'mellúszás'),
+(35, 'mezei futóverseny'),
 (8, 'rúdugrás'),
 (21, 'sakk'),
 (6, 'súlyemelés'),
@@ -373,6 +417,7 @@ CREATE TABLE `versenytipusok` (
 INSERT INTO `versenytipusok` (`id`, `tNev`) VALUES
 (1, 'megyei'),
 (2, 'megyei és területi'),
+(5, 'megyei/körzeti'),
 (3, 'országos'),
 (4, 'területi');
 
@@ -414,7 +459,19 @@ INSERT INTO `verseny_diak_kotes` (`evId`, `diakId`, `versenyId`, `szamId`, `tipu
 (7, 11, 20, NULL, 1, 2, NULL),
 (7, 11, 21, NULL, 1, 2, NULL),
 (7, 7, 20, NULL, 4, 1, NULL),
-(7, 7, 21, NULL, 1, 1, NULL);
+(7, 7, 21, NULL, 1, 1, NULL),
+(8, 12, 22, 19, NULL, 1, NULL),
+(8, 8, 17, 13, 3, 3, NULL),
+(8, 8, 10, 13, 3, 2, NULL),
+(8, 13, 17, 20, 3, 10, NULL),
+(8, 14, 24, NULL, 3, 7, NULL),
+(8, 15, 25, NULL, NULL, 1, NULL),
+(8, 16, 3, 23, 1, 1, NULL),
+(8, 17, 3, 24, 1, 2, NULL),
+(8, 17, 3, 25, 1, 2, NULL),
+(8, 18, 3, 26, 1, 2, NULL),
+(8, 19, 29, NULL, NULL, 1, 6),
+(8, 20, 3, 27, 3, 1, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -528,7 +585,7 @@ ALTER TABLE `verseny_diak_kotes`
 -- AUTO_INCREMENT a táblához `diakok`
 --
 ALTER TABLE `diakok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT a táblához `dijak`
@@ -540,13 +597,13 @@ ALTER TABLE `dijak`
 -- AUTO_INCREMENT a táblához `egyebek`
 --
 ALTER TABLE `egyebek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `korcsoportok_nemek`
 --
 ALTER TABLE `korcsoportok_nemek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `tanevek`
@@ -558,19 +615,19 @@ ALTER TABLE `tanevek`
 -- AUTO_INCREMENT a táblához `versenyek`
 --
 ALTER TABLE `versenyek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT a táblához `versenyszam`
 --
 ALTER TABLE `versenyszam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT a táblához `versenytipusok`
 --
 ALTER TABLE `versenytipusok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Megkötések a kiírt táblákhoz
