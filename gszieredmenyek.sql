@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Sze 27. 10:07
+-- Létrehozás ideje: 2025. Sze 30. 08:22
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -83,7 +83,11 @@ INSERT INTO `csapat_diak_kotes` (`evId`, `csapatId`, `versenyId`, `szamId`, `tip
 (8, NULL, 28, NULL, NULL, 2, 4),
 (8, NULL, 28, NULL, NULL, 3, 5),
 (8, NULL, 3, 22, 1, 3, 4),
-(8, NULL, 3, 22, 1, 3, 5);
+(8, NULL, 3, 22, 1, 3, 5),
+(9, NULL, 34, NULL, NULL, 3, NULL),
+(9, NULL, 3, 35, 1, 2, NULL),
+(9, NULL, 35, NULL, NULL, 3, NULL),
+(9, NULL, 36, NULL, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -471,7 +475,34 @@ INSERT INTO `verseny_diak_kotes` (`evId`, `diakId`, `versenyId`, `szamId`, `tipu
 (8, 17, 3, 25, 1, 2, NULL),
 (8, 18, 3, 26, 1, 2, NULL),
 (8, 19, 29, NULL, NULL, 1, 6),
-(8, 20, 3, 27, 3, 1, NULL);
+(8, 20, 3, 27, 3, 1, NULL),
+(9, 11, 10, 10, 3, 5, NULL),
+(9, 24, 10, 10, 3, 9, NULL),
+(9, 25, 10, 10, 3, 8, NULL),
+(9, 26, 10, 14, 3, 2, NULL),
+(9, 27, 17, 13, 3, 1, NULL),
+(9, 27, 10, 13, 3, 7, NULL),
+(9, 27, 10, 10, 3, 3, NULL),
+(9, 28, 17, 13, 3, 2, NULL),
+(9, 28, 10, 13, 3, 7, NULL),
+(9, 28, 10, 10, 3, 4, NULL),
+(9, 14, 24, NULL, 3, 1, NULL),
+(9, 9, 10, 34, 3, 3, NULL),
+(9, 11, 30, NULL, 5, 3, NULL),
+(9, 29, 30, NULL, 5, 3, NULL),
+(9, 15, 32, NULL, NULL, 1, NULL),
+(9, 15, 31, NULL, 3, 3, NULL),
+(9, 30, 33, NULL, 1, 4, NULL),
+(9, 9, 30, NULL, 5, 2, NULL),
+(9, 31, 30, NULL, 5, 1, NULL),
+(9, 32, 3, 4, 3, 2, 7),
+(9, 33, 3, 35, 1, 2, NULL),
+(9, 33, 3, 39, 1, 2, NULL),
+(9, 19, 37, NULL, NULL, 3, NULL),
+(9, 19, 29, NULL, NULL, 1, 6),
+(9, 19, 38, 36, NULL, 2, NULL),
+(9, 19, 37, 37, NULL, 3, NULL),
+(9, 20, 3, 38, 3, 1, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
