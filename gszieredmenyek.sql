@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Okt 09. 09:19
+-- Létrehozás ideje: 2025. Okt 24. 19:10
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -28,6 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `csapatok` (
+  `csapatId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `csapattagok`
+--
+
+CREATE TABLE `csapattagok` (
+  `sorId` int(11) NOT NULL,
   `csapatId` int(11) NOT NULL,
   `diakId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -45,49 +56,50 @@ CREATE TABLE `csapat_diak_kotes` (
   `szamId` int(11) DEFAULT NULL,
   `tipusId` int(11) DEFAULT NULL,
   `helyezes` int(11) DEFAULT NULL,
-  `kcsId` int(11) DEFAULT NULL
+  `kcsId` int(11) DEFAULT NULL,
+  `sorId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `csapat_diak_kotes`
 --
 
-INSERT INTO `csapat_diak_kotes` (`evId`, `csapatId`, `versenyId`, `szamId`, `tipusId`, `helyezes`, `kcsId`) VALUES
-(1, NULL, 1, 1, NULL, 1, NULL),
-(1, NULL, 2, 2, NULL, 2, NULL),
-(1, NULL, 1, 3, NULL, 1, NULL),
-(1, NULL, 1, 4, NULL, 2, NULL),
-(2, NULL, 3, 5, 1, 2, 2),
-(2, NULL, 3, 6, 1, 3, NULL),
-(2, NULL, 2, 2, NULL, 3, NULL),
-(3, NULL, 5, 22, NULL, 3, 1),
-(3, NULL, 6, 11, NULL, 3, NULL),
-(3, NULL, 6, 12, NULL, 2, NULL),
-(3, NULL, 6, 3, NULL, 1, NULL),
-(3, NULL, 7, NULL, NULL, 3, NULL),
-(3, NULL, 8, 2, NULL, 1, NULL),
-(3, NULL, 9, NULL, 1, 2, NULL),
-(4, NULL, 3, 15, 2, 1, NULL),
-(4, NULL, 11, NULL, NULL, 3, NULL),
-(4, NULL, 5, 16, NULL, 1, NULL),
-(4, NULL, 12, 17, NULL, 3, NULL),
-(5, NULL, 5, 16, NULL, 3, NULL),
-(6, NULL, 13, 18, NULL, 2, 1),
-(7, NULL, 15, NULL, NULL, 1, NULL),
-(7, NULL, 16, NULL, NULL, 6, NULL),
-(8, NULL, 23, NULL, NULL, 2, NULL),
-(8, NULL, 23, NULL, NULL, 8, NULL),
-(8, NULL, 3, 21, 1, 1, 1),
-(8, NULL, 26, NULL, NULL, 1, NULL),
-(8, NULL, 27, NULL, NULL, 1, NULL),
-(8, NULL, 28, NULL, NULL, 2, 4),
-(8, NULL, 28, NULL, NULL, 3, 5),
-(8, NULL, 3, 22, 1, 3, 4),
-(8, NULL, 3, 22, 1, 3, 5),
-(9, NULL, 34, NULL, NULL, 3, NULL),
-(9, NULL, 3, 35, 1, 2, NULL),
-(9, NULL, 35, NULL, NULL, 3, NULL),
-(9, NULL, 36, NULL, NULL, 1, NULL);
+INSERT INTO `csapat_diak_kotes` (`evId`, `csapatId`, `versenyId`, `szamId`, `tipusId`, `helyezes`, `kcsId`, `sorId`) VALUES
+(1, NULL, 1, 1, NULL, 1, NULL, 1),
+(1, NULL, 2, 2, NULL, 2, NULL, 2),
+(1, NULL, 1, 3, NULL, 1, NULL, 3),
+(1, NULL, 1, 4, NULL, 2, NULL, 4),
+(2, NULL, 3, 5, 1, 2, 2, 5),
+(2, NULL, 3, 6, 1, 3, NULL, 6),
+(2, NULL, 2, 2, NULL, 3, NULL, 7),
+(3, NULL, 5, 22, NULL, 3, 1, 8),
+(3, NULL, 6, 11, NULL, 3, NULL, 9),
+(3, NULL, 6, 12, NULL, 2, NULL, 10),
+(3, NULL, 6, 3, NULL, 1, NULL, 11),
+(3, NULL, 7, NULL, NULL, 3, NULL, 12),
+(3, NULL, 8, 2, NULL, 1, NULL, 13),
+(3, NULL, 9, NULL, 1, 2, NULL, 14),
+(4, NULL, 3, 15, 2, 1, NULL, 15),
+(4, NULL, 11, NULL, NULL, 3, NULL, 16),
+(4, NULL, 5, 16, NULL, 1, NULL, 17),
+(4, NULL, 12, 17, NULL, 3, NULL, 18),
+(5, NULL, 5, 16, NULL, 3, NULL, 19),
+(6, NULL, 13, 18, NULL, 2, 1, 20),
+(7, NULL, 15, NULL, NULL, 1, NULL, 21),
+(7, NULL, 16, NULL, NULL, 6, NULL, 22),
+(8, NULL, 23, NULL, NULL, 2, NULL, 23),
+(8, NULL, 23, NULL, NULL, 8, NULL, 24),
+(8, NULL, 3, 21, 1, 1, 1, 25),
+(8, NULL, 26, NULL, NULL, 1, NULL, 26),
+(8, NULL, 27, NULL, NULL, 1, NULL, 27),
+(8, NULL, 28, NULL, NULL, 2, 4, 28),
+(8, NULL, 28, NULL, NULL, 3, 5, 29),
+(8, NULL, 3, 22, 1, 3, 4, 30),
+(8, NULL, 3, 22, 1, 3, 5, 31),
+(9, NULL, 34, NULL, NULL, 3, NULL, 32),
+(9, NULL, 3, 35, 1, 2, NULL, 33),
+(9, NULL, 35, NULL, NULL, 3, NULL, 34),
+(9, NULL, 36, NULL, NULL, 1, NULL, 35);
 
 -- --------------------------------------------------------
 
@@ -335,6 +347,7 @@ CREATE TABLE `versenyek` (
 --
 
 INSERT INTO `versenyek` (`id`, `vNev`) VALUES
+(43, '\"Édes anyanyelvünk\" nyelvhasználati verseny'),
 (34, '\"Játék időhatárok nélkül\" sportvetélkedő'),
 (13, '\"Szuper kupa\"'),
 (21, 'Bay Zoltán Fizika Emlékverseny'),
@@ -344,6 +357,7 @@ INSERT INTO `versenyek` (`id`, `vNev`) VALUES
 (3, 'Diákolimpia'),
 (38, 'Dragon Kupa Taekwon-do'),
 (29, 'Fehér Kupa Taekwon-do'),
+(41, 'Gábor Dénes Számítástechnikai Emlékverseny'),
 (30, 'Gordiusz Matematika Tesztverseny'),
 (4, 'id. Christián László emlékverseny'),
 (33, 'Implom József helyesírás Verseny'),
@@ -357,6 +371,7 @@ INSERT INTO `versenyek` (`id`, `vNev`) VALUES
 (26, 'Középiskolás Városi Labdarúgó Bajnokság'),
 (1, 'Megyei Fedettpályás Középiskolai Atlétika'),
 (6, 'Megyei Középiskolai Atlétikai Verseny'),
+(42, 'Megyei Számítástechnikai Verseny'),
 (40, 'Mikes Kelemen Versmondó Verseny'),
 (18, 'Nemes Tihamér Országos Középiskolai Számítástechnikai Tanulmányi Verseny'),
 (7, 'Nemzetközi Diák Labdarúgó Torna'),
@@ -396,6 +411,7 @@ INSERT INTO `versenyszam` (`id`, `szNev`) VALUES
 (12, '200m-es futás'),
 (5, '4x50-es gyorsúszás'),
 (1, '60 méter gátfutás'),
+(40, 'automatika'),
 (10, 'automatika - PLC'),
 (7, 'diszkoszvetés'),
 (36, 'egyéni küzdelem'),
@@ -414,8 +430,11 @@ INSERT INTO `versenyszam` (`id`, `szNev`) VALUES
 (17, 'kispályás labdarúgás'),
 (18, 'kosárlabda'),
 (2, 'labdarúgás'),
+(43, 'magasugrás'),
 (25, 'mellúszás'),
 (35, 'mezei futóverseny'),
+(41, 'pneumatika'),
+(42, 'programozó'),
 (8, 'rúdugrás'),
 (21, 'sakk'),
 (6, 'súlyemelés'),
@@ -461,85 +480,89 @@ CREATE TABLE `verseny_diak_kotes` (
   `szamId` int(11) DEFAULT NULL,
   `tipusId` int(11) DEFAULT NULL,
   `helyezes` int(11) DEFAULT NULL,
-  `kcsId` int(11) DEFAULT NULL
+  `kcsId` int(11) DEFAULT NULL,
+  `sorId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `verseny_diak_kotes`
 --
 
-INSERT INTO `verseny_diak_kotes` (`evId`, `diakId`, `versenyId`, `szamId`, `tipusId`, `helyezes`, `kcsId`) VALUES
-(2, 1, 4, 7, 1, 2, NULL),
-(2, 2, 4, 8, 1, 3, NULL),
-(2, 2, 4, 9, 1, 3, NULL),
-(3, 2, 6, 8, NULL, 2, NULL),
-(4, 4, 10, 13, 3, 1, NULL),
-(4, 5, 10, 14, 3, 7, NULL),
-(6, 7, 14, NULL, 4, 2, NULL),
-(7, 8, 17, 13, 3, 8, NULL),
-(7, 8, 10, 14, 3, 10, NULL),
-(7, 7, 18, NULL, 3, 5, NULL),
-(7, 7, 19, NULL, NULL, 1, NULL),
-(7, 9, 18, NULL, 1, 2, NULL),
-(7, 9, 20, NULL, 4, 2, NULL),
-(7, 10, 20, NULL, 1, 3, NULL),
-(7, 11, 20, NULL, 1, 2, NULL),
-(7, 11, 21, NULL, 1, 2, NULL),
-(7, 7, 20, NULL, 4, 1, NULL),
-(7, 7, 21, NULL, 1, 1, NULL),
-(8, 12, 22, 19, NULL, 1, NULL),
-(8, 8, 17, 13, 3, 3, NULL),
-(8, 8, 10, 13, 3, 2, NULL),
-(8, 13, 17, 20, 3, 10, NULL),
-(8, 14, 24, NULL, 3, 7, NULL),
-(8, 15, 25, NULL, NULL, 1, NULL),
-(8, 16, 3, 23, 1, 1, NULL),
-(8, 17, 3, 24, 1, 2, NULL),
-(8, 17, 3, 25, 1, 2, NULL),
-(8, 18, 3, 26, 1, 2, NULL),
-(8, 19, 29, NULL, NULL, 1, 6),
-(8, 20, 3, 27, 3, 1, NULL),
-(9, 11, 10, 10, 3, 5, NULL),
-(9, 24, 10, 10, 3, 9, NULL),
-(9, 25, 10, 10, 3, 8, NULL),
-(9, 26, 10, 14, 3, 2, NULL),
-(9, 27, 17, 13, 3, 1, NULL),
-(9, 27, 10, 13, 3, 7, NULL),
-(9, 27, 10, 10, 3, 3, NULL),
-(9, 28, 17, 13, 3, 2, NULL),
-(9, 28, 10, 13, 3, 7, NULL),
-(9, 28, 10, 10, 3, 4, NULL),
-(9, 14, 24, NULL, 3, 1, NULL),
-(9, 9, 10, 34, 3, 3, NULL),
-(9, 11, 30, NULL, 5, 3, NULL),
-(9, 29, 30, NULL, 5, 3, NULL),
-(9, 15, 32, NULL, NULL, 1, NULL),
-(9, 15, 31, NULL, 3, 3, NULL),
-(9, 30, 33, NULL, 1, 4, NULL),
-(9, 9, 30, NULL, 5, 2, NULL),
-(9, 31, 30, NULL, 5, 1, NULL),
-(9, 32, 3, 4, 3, 2, 7),
-(9, 33, 3, 35, 1, 2, NULL),
-(9, 33, 3, 39, 1, 2, NULL),
-(9, 19, 37, NULL, NULL, 3, NULL),
-(9, 19, 29, NULL, NULL, 1, 6),
-(9, 19, 38, 36, NULL, 2, NULL),
-(9, 19, 37, 37, NULL, 3, NULL),
-(9, 20, 3, 38, 3, 1, NULL),
-(10, 35, 17, 13, 3, 3, NULL),
-(10, 35, 10, 13, 3, 4, NULL),
-(10, 36, 17, 13, 3, 4, NULL),
-(10, 36, 10, 13, 3, 7, NULL),
-(10, 37, 39, NULL, 3, 6, NULL),
-(10, 38, 39, NULL, 3, 6, NULL),
-(10, 39, 10, 14, 3, 7, NULL),
-(10, 40, 17, 13, 3, 6, NULL),
-(10, 40, 10, 13, 3, 8, NULL),
-(10, 41, 39, NULL, 3, 6, NULL),
-(10, 42, 10, 13, 3, 10, NULL),
-(10, 43, 10, 13, 3, 9, NULL),
-(10, 15, 40, NULL, NULL, 1, NULL),
-(10, 32, 3, 4, 3, 1, 7);
+INSERT INTO `verseny_diak_kotes` (`evId`, `diakId`, `versenyId`, `szamId`, `tipusId`, `helyezes`, `kcsId`, `sorId`) VALUES
+(2, 1, 4, 7, 1, 2, NULL, 1),
+(2, 2, 4, 8, 1, 3, NULL, 2),
+(2, 2, 4, 9, 1, 3, NULL, 3),
+(3, 2, 6, 8, NULL, 2, NULL, 4),
+(4, 4, 10, 13, 3, 1, NULL, 5),
+(4, 5, 10, 14, 3, 7, NULL, 6),
+(6, 7, 14, NULL, 4, 2, NULL, 7),
+(7, 8, 17, 13, 3, 8, NULL, 8),
+(7, 8, 10, 14, 3, 10, NULL, 9),
+(7, 7, 18, NULL, 3, 5, NULL, 10),
+(7, 7, 19, NULL, NULL, 1, NULL, 11),
+(7, 9, 18, NULL, 1, 2, NULL, 12),
+(7, 9, 20, NULL, 4, 2, NULL, 13),
+(7, 10, 20, NULL, 1, 3, NULL, 14),
+(7, 11, 20, NULL, 1, 2, NULL, 15),
+(7, 11, 21, NULL, 1, 2, NULL, 16),
+(7, 7, 20, NULL, 4, 1, NULL, 17),
+(7, 7, 21, NULL, 1, 1, NULL, 18),
+(8, 12, 22, 19, NULL, 1, NULL, 19),
+(8, 8, 17, 13, 3, 3, NULL, 20),
+(8, 8, 10, 13, 3, 2, NULL, 21),
+(8, 13, 17, 20, 3, 10, NULL, 22),
+(8, 14, 24, NULL, 3, 7, NULL, 23),
+(8, 15, 25, NULL, NULL, 1, NULL, 24),
+(8, 16, 3, 23, 1, 1, NULL, 25),
+(8, 17, 3, 24, 1, 2, NULL, 26),
+(8, 17, 3, 25, 1, 2, NULL, 27),
+(8, 18, 3, 26, 1, 2, NULL, 28),
+(8, 19, 29, NULL, NULL, 1, 6, 29),
+(8, 20, 3, 27, 3, 1, NULL, 30),
+(9, 11, 10, 10, 3, 5, NULL, 31),
+(9, 24, 10, 10, 3, 9, NULL, 32),
+(9, 25, 10, 10, 3, 8, NULL, 33),
+(9, 26, 10, 14, 3, 2, NULL, 34),
+(9, 27, 17, 13, 3, 1, NULL, 35),
+(9, 27, 10, 13, 3, 7, NULL, 36),
+(9, 27, 10, 10, 3, 3, NULL, 37),
+(9, 28, 17, 13, 3, 2, NULL, 38),
+(9, 28, 10, 13, 3, 7, NULL, 39),
+(9, 28, 10, 10, 3, 4, NULL, 40),
+(9, 14, 24, NULL, 3, 1, NULL, 41),
+(9, 9, 10, 34, 3, 3, NULL, 42),
+(9, 11, 30, NULL, 5, 3, NULL, 43),
+(9, 29, 30, NULL, 5, 3, NULL, 44),
+(9, 15, 32, NULL, NULL, 1, NULL, 45),
+(9, 15, 31, NULL, 3, 3, NULL, 46),
+(9, 30, 33, NULL, 1, 4, NULL, 47),
+(9, 9, 30, NULL, 5, 2, NULL, 48),
+(9, 31, 30, NULL, 5, 1, NULL, 49),
+(9, 32, 3, 4, 3, 2, 7, 50),
+(9, 33, 3, 35, 1, 2, NULL, 51),
+(9, 33, 3, 39, 1, 2, NULL, 52),
+(9, 19, 37, NULL, NULL, 3, NULL, 53),
+(9, 19, 29, NULL, NULL, 1, 6, 54),
+(9, 19, 38, 36, NULL, 2, NULL, 55),
+(9, 19, 37, 37, NULL, 3, NULL, 56),
+(9, 20, 3, 38, 3, 1, NULL, 57),
+(10, 35, 17, 13, 3, 3, NULL, 58),
+(10, 35, 10, 13, 3, 4, NULL, 59),
+(10, 36, 17, 13, 3, 4, NULL, 60),
+(10, 36, 10, 13, 3, 7, NULL, 61),
+(10, 37, 39, NULL, 3, 6, NULL, 62),
+(10, 38, 39, NULL, 3, 6, NULL, 63),
+(10, 39, 10, 14, 3, 7, NULL, 64),
+(10, 40, 17, 13, 3, 6, NULL, 65),
+(10, 40, 10, 13, 3, 8, NULL, 66),
+(10, 41, 39, NULL, 3, 6, NULL, 67),
+(10, 42, 10, 13, 3, 10, NULL, 68),
+(10, 43, 10, 13, 3, 9, NULL, 69),
+(10, 15, 40, NULL, NULL, 1, NULL, 70),
+(10, 32, 3, 4, 3, 1, 7, 71),
+(11, 44, 10, 40, 3, 1, NULL, 72),
+(11, 45, 10, 13, 3, 10, NULL, 73),
+(11, 46, 10, 40, 3, 9, NULL, 74);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -549,19 +572,28 @@ INSERT INTO `verseny_diak_kotes` (`evId`, `diakId`, `versenyId`, `szamId`, `tipu
 -- A tábla indexei `csapatok`
 --
 ALTER TABLE `csapatok`
-  ADD KEY `CSKotes_Csapatok_FK` (`csapatId`),
-  ADD KEY `Diakok_Csapatok_FK` (`diakId`);
+  ADD PRIMARY KEY (`csapatId`);
+
+--
+-- A tábla indexei `csapattagok`
+--
+ALTER TABLE `csapattagok`
+  ADD PRIMARY KEY (`sorId`),
+  ADD KEY `csapatId` (`csapatId`),
+  ADD KEY `diakId` (`diakId`);
 
 --
 -- A tábla indexei `csapat_diak_kotes`
 --
 ALTER TABLE `csapat_diak_kotes`
-  ADD UNIQUE KEY `csapatId` (`csapatId`),
+  ADD PRIMARY KEY (`sorId`),
+  ADD UNIQUE KEY `evId` (`evId`,`csapatId`,`versenyId`,`szamId`,`tipusId`,`kcsId`),
   ADD KEY `Tanevek_CSKotes_FK` (`evId`),
   ADD KEY `Versenyek_CSKotes_FK` (`versenyId`),
   ADD KEY `Versenyszamok_CSKotes_FK` (`szamId`),
   ADD KEY `VersenyTipusok_CSKotes_FK` (`tipusId`),
-  ADD KEY `Csapat_KCSN_FK` (`kcsId`);
+  ADD KEY `Csapat_KCSN_FK` (`kcsId`),
+  ADD KEY `CSKotes_Csapatok_FK` (`csapatId`);
 
 --
 -- A tábla indexei `diakok`
@@ -638,6 +670,8 @@ ALTER TABLE `versenytipusok`
 -- A tábla indexei `verseny_diak_kotes`
 --
 ALTER TABLE `verseny_diak_kotes`
+  ADD PRIMARY KEY (`sorId`),
+  ADD UNIQUE KEY `evId` (`evId`,`diakId`,`versenyId`,`szamId`,`tipusId`,`kcsId`),
   ADD KEY `Tanevek_Kotes_FK` (`evId`),
   ADD KEY `Diakok_Kotes_FK` (`diakId`),
   ADD KEY `Versenyek_Kotes_FK` (`versenyId`),
@@ -648,6 +682,18 @@ ALTER TABLE `verseny_diak_kotes`
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
+
+--
+-- AUTO_INCREMENT a táblához `csapattagok`
+--
+ALTER TABLE `csapattagok`
+  MODIFY `sorId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT a táblához `csapat_diak_kotes`
+--
+ALTER TABLE `csapat_diak_kotes`
+  MODIFY `sorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT a táblához `diakok`
@@ -683,13 +729,13 @@ ALTER TABLE `tanevek`
 -- AUTO_INCREMENT a táblához `versenyek`
 --
 ALTER TABLE `versenyek`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT a táblához `versenyszam`
 --
 ALTER TABLE `versenyszam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT a táblához `versenytipusok`
@@ -698,20 +744,27 @@ ALTER TABLE `versenytipusok`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT a táblához `verseny_diak_kotes`
+--
+ALTER TABLE `verseny_diak_kotes`
+  MODIFY `sorId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
 -- Megkötések a kiírt táblákhoz
 --
 
 --
--- Megkötések a táblához `csapatok`
+-- Megkötések a táblához `csapattagok`
 --
-ALTER TABLE `csapatok`
-  ADD CONSTRAINT `CSKotes_Csapatok_FK` FOREIGN KEY (`csapatId`) REFERENCES `csapat_diak_kotes` (`csapatId`),
-  ADD CONSTRAINT `Diakok_Csapatok_FK` FOREIGN KEY (`diakId`) REFERENCES `diakok` (`id`);
+ALTER TABLE `csapattagok`
+  ADD CONSTRAINT `csapattagok_ibfk_1` FOREIGN KEY (`csapatId`) REFERENCES `csapatok` (`csapatId`),
+  ADD CONSTRAINT `csapattagok_ibfk_2` FOREIGN KEY (`diakId`) REFERENCES `diakok` (`id`);
 
 --
 -- Megkötések a táblához `csapat_diak_kotes`
 --
 ALTER TABLE `csapat_diak_kotes`
+  ADD CONSTRAINT `CSKotes_Csapatok_FK` FOREIGN KEY (`csapatId`) REFERENCES `csapatok` (`csapatId`),
   ADD CONSTRAINT `Csapat_KCSN_FK` FOREIGN KEY (`kcsId`) REFERENCES `korcsoportok_nemek` (`id`),
   ADD CONSTRAINT `Tanevek_CSKotes_FK` FOREIGN KEY (`evId`) REFERENCES `tanevek` (`id`),
   ADD CONSTRAINT `VersenyTipusok_CSKotes_FK` FOREIGN KEY (`tipusId`) REFERENCES `versenytipusok` (`id`),
